@@ -19,19 +19,29 @@
     <main id="main">
       <div class="inputline">
         <div class="inputbox">
+          <p class="controlbox">parameter control box</p>
+          <button id="addparambtn">add_parameter</button>
+          <button id="removeparambtn">remove_parameter</button>
+          <br />
+          <br />
+          <p class="controlbox">parameter control box</p>
           <label class="inputwhat">
-            input parameter 1
-            <input id="input1" type="text" placeholder="값을 입력하세요" />
+            parameter 1
+            <input
+              id="input1"
+              type="text"
+              placeholder="값을 입력하세요"
+            /><br />
           </label>
-          <br />
-          <br />
+
           <label class="inputwhat">
-            input parameter 2
+            parameter 2
             <input id="input2" type="text" placeholder="값을 입력하세요" />
           </label>
         </div>
+        <br />
         <div class="submitbtn">
-          <button id="btn">결과 출력</button>
+          <button id="finalbtn">결과 출력</button>
         </div>
         <div id="answer">실행 대기중...</div>
       </div>

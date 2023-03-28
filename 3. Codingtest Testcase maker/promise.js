@@ -1,4 +1,4 @@
-const btn = document.getElementById("btn");
+const btn = document.getElementById("finalbtn");
 const answer = document.getElementById("answer");
 const input1 = document.getElementById("input1");
 const input2 = document.getElementById("input2");
