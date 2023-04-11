@@ -3,7 +3,7 @@
   <head>
     <title>Codingtest Testcase Maker</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="promise.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
   </head>
   <body>
     <header id="header">
@@ -13,31 +13,32 @@
           id="main_link"
           href="https://github.com/gboycdw/Solo_project/tree/main/3.%20Codingtest%20Testcase%20maker"
         ></a>
-        <p id="main_head">a를 b로 나눈 몫을 구하시오.</p>
+        <p id="main_head">
+          입력한 모든 parameter의 합을 구하시오. parameter은 추가하거나 제거할
+          수 있어야 합니다. parameter에 아무런 값이 입력되지 않거나, 숫자가 아닌
+          값이 입력되면 3초 후 초기화 해야 합니다.
+        </p>
       </div>
     </header>
     <main id="main">
       <div class="inputline">
-        <div class="inputbox">
-          <p class="controlbox">parameter control box</p>
+        <div class="controlbox">
+          <p class="controltext">parameter control box</p>
           <button id="addparambtn">add_parameter</button>
           <button id="removeparambtn">remove_parameter</button>
           <br />
-          <br />
-          <p class="controlbox">parameter control box</p>
-          <label class="inputwhat">
-            parameter 1
+          <p class="controltext">parameter control box</p>
+        </div>
+        <div class="inputbox">
+          <!-- <label class="inputwhat">
+            <a id="param">parameter 1</a>
             <input
               id="input1"
               type="text"
               placeholder="값을 입력하세요"
-            /><br />
-          </label>
-
-          <label class="inputwhat">
-            parameter 2
-            <input id="input2" type="text" placeholder="값을 입력하세요" />
-          </label>
+            />
+            
+          </label> -->
         </div>
         <br />
         <div class="submitbtn">
@@ -53,6 +54,8 @@
       </div>
     </main>
     <footer></footer>
-    <script src="promise.js"></script>
+    <script src="index.js"></script>
+    <script src="gettestcase.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>

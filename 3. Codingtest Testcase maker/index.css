@@ -1,5 +1,6 @@
 * {
   margin: 8;
+  font-family: "Arial", Times, sans-serif;
 }
 
 #header {
@@ -38,7 +39,7 @@
   border-radius: 10px;
 }
 
-#main .controlbox {
+#main .controltext {
   background-color: aquamarine;
   border-radius: 5px;
   text-align: center;
@@ -58,8 +59,8 @@
   clear: both;
   text-align: center;
   font-weight: 5px;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 13px;
+  font-family: "Lucida Handwriting", Comic Sans Ms, Handwriting;
+  font-size: 18px;
 }
 
 #main div.mycode {
@@ -84,4 +85,8 @@
   margin: 5px 5px;
   padding: 5px 5px;
   background-color: lightgoldenrodyellow;
+}
+
+#main #param {
+  display: flex;
 }
