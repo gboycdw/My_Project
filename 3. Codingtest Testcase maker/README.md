@@ -25,3 +25,4 @@
 1. `2023. 3. 26` 초기 html/css/javascrip를 작성하여 input parameter 2개일때의 기능을 구현하였음.
 2. `2023. 3. 29` parameter control box의 layout을 추가하였음.
 3. `2023. 4. 3.` 본 README.md 파일을 작성하고, 단기 프로젝트 목표를 확정하였음.
+4. `2023. 4. 11.`파일명 promise에서 각각의 기능에 맞게 수정, 작동하는 함수 부분과 테스트케이스 정답을 출력하는 부분을 분리, parameter 추가 제거 기능 추가
