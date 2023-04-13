@@ -26,3 +26,7 @@
 2. `2023. 3. 29` parameter control box의 layout을 추가하였음.
 3. `2023. 4. 3.` 본 README.md 파일을 작성하고, 단기 프로젝트 목표를 확정하였음.
 4. `2023. 4. 11.`파일명 promise에서 각각의 기능에 맞게 수정, 작동하는 함수 부분과 테스트케이스 정답을 출력하는 부분을 분리, parameter 추가 제거 기능 추가
+
+### 블로그 링크
+
+[[Solo project] 개인 프로젝트 진행 경과 (velog.io)](https://velog.io/@gomao/Solo-project-%ED%85%8C%EC%BC%80-%EB%A9%94%EC%9D%B4%EC%BB%A4-%EC%A7%84%ED%96%89-%EA%B2%BD%EA%B3%BC)
