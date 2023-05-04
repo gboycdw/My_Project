@@ -1,0 +1,27 @@
+.game-starter {
+  display: inline-box;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.buttons {
+  padding: 5px;
+}
+
+#game-button {
+  margin: 5px;
+}
+#end-button {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.gamebox {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  width: auto;
+}
