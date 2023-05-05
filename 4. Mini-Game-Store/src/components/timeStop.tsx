@@ -116,7 +116,8 @@ function TimeStopGame() {
             fontFamily: "sans-serif",
           }}
         >
-          ......................mini-mini game project......................
+          ..........................mini-mini game
+          project..........................
         </a>
         <div className="gamebox">
           <div>
