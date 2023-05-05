@@ -1,0 +1,56 @@
+/* game starter 부분 */
+.game-starter {
+  display: inline-box;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+/* time Stop 부분 */
+.buttons {
+  padding: 5px;
+}
+#game-title {
+  padding: 5px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid green;
+}
+
+#game-button {
+  margin: 5px;
+  width: 75px;
+}
+#option-button {
+  text-align: center;
+  margin: 5px;
+  width: 90px;
+}
+#submit-button {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+#reset-button {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.gamebox {
+  clear: both;
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  width: auto;
+}
+
+.game {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  width: auto;
+}

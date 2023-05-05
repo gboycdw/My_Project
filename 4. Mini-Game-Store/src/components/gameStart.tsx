@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./index.css";
+import "./timeStop.css";
 function GameStarter() {
   return (
     <>
