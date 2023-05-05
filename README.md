@@ -1,5 +1,3 @@
-# Solo_project
+# My_project
 
-Solo Project
-
-> 혼자 하는 프로젝트 자료 모음
+프로젝트 모음 레포지토리
