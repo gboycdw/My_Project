@@ -31,6 +31,7 @@ function TimeStopGame() {
   const [showScore, setShowScore] = React.useState(false);
   const [showTime, setShowTime] = React.useState(true);
   const [scores, setScores] = React.useState([]);
+  const [printScore, setPrintScore] = React.useState("");
   // 게임 시작 버튼
   function gameStart() {
     const start = new Date();
@@ -88,15 +89,22 @@ function TimeStopGame() {
       const parsedScoreData = JSON.parse(scoreData);
       setScores(parsedScoreData);
     }
+    if (scores && scores.length > 0) {
+      const bestScore = scores.reduce((prev, curr) => {
+        return Math.abs(curr - 10) < Math.abs(prev - 10) ? curr : prev;
+      });
+      const worstScore = scores.reduce((prev, curr) => {
+        return Math.abs(curr - 10) > Math.abs(prev - 10) ? curr : prev;
+      });
+      const averageScore =
+        scores.reduce((acc, cur) => acc + cur, 0) / scores.length;
+      const finalMessage = `Best : ${bestScore}, Worst : ${worstScore}, AVR : ${averageScore.toFixed(
+        3
+      )}`;
+      setPrintScore(finalMessage);
+    }
   }, [localStorage, scores]);
-  const bestScore = scores.reduce((prev, curr) => {
-    return Math.abs(curr - 10) < Math.abs(prev - 10) ? curr : prev;
-  });
-  const worstScore = scores.reduce((prev, curr) => {
-    return Math.abs(curr - 10) > Math.abs(prev - 10) ? curr : prev;
-  });
 
-  const average = scores.reduce((acc, cur) => acc + cur, 0) / scores.length;
   //---------------------------------------------------------------------------------------//
   return (
     <>
@@ -182,7 +190,7 @@ function TimeStopGame() {
             ))}
           </ul>
           <span style={{ display: "flex", justifyContent: "center" }}>
-            Best : {bestScore}초, worst : {worstScore}초, avr : {average}초
+            {printScore}
           </span>
         </div>
       </div>
