@@ -30,7 +30,7 @@ function TimeStopGame() {
   const [elapsedTime, setElapsedTime] = React.useState<number | null>(null);
   const [showScore, setShowScore] = React.useState(false);
   const [showTime, setShowTime] = React.useState(true);
-  const [scores, setScores] = React.useState([]);
+  const [scores, setScores] = React.useState<number[]>([]);
   const [printScore, setPrintScore] = React.useState("");
   // 게임 시작 버튼
   function gameStart() {
@@ -47,16 +47,23 @@ function TimeStopGame() {
     setEndButton(false);
     setShowScore(true);
     setRestartButton(true);
-    const scoreData = localStorage.getItem("score");
-    if (scoreData && scoreData.length > 0) {
-      const newScoreData = JSON.parse(scoreData);
-      newScoreData.push(elapsedTime);
-
-      localStorage.setItem("score", JSON.stringify(newScoreData));
-    } else {
-      const newScoreData = [elapsedTime];
-      localStorage.setItem("score", JSON.stringify(newScoreData));
+    if (initTime && end) {
+      const elapsedTime = (end.getTime() - initTime[1].getTime()) / 1000;
+      setElapsedTime(elapsedTime);
+      setScores([...scores, elapsedTime]);
+      // localStorage.setItem("score", JSON.stringify([...scores, elapsedTime])); // 로컬스토리지 사용 보류
     }
+    // ----------------로컬스토리지를 활용하는 방법 - 사용 보류 ----------------------
+    // const scoreData = localStorage.getItem("score");
+    // if (scoreData && scoreData.length > 0) {
+    //   const newScoreData = JSON.parse(scoreData);
+    //   newScoreData.push(elapsedTime);
+    //   localStorage.setItem("score", JSON.stringify(newScoreData));
+    // } else {
+    //   const newScoreData = [elapsedTime];
+    //   localStorage.setItem("score", JSON.stringify(newScoreData));
+    // }
+    // ----------------------------------------------------------------------------
   }
   function scoreSubmit() {
     alert("아직 미구현 기능입니다.ㅎㅎ;");
@@ -73,27 +80,34 @@ function TimeStopGame() {
   function visibleTime() {
     setShowTime(!showTime);
   }
-  // 경과시간을 출력하는 부분 : 효율성 개선 필요함. 현재 개쓰레기임. new Date를 계속 호출하고 있음.
+  // 경과시간을 출력하는 부분
   React.useEffect(() => {
     if (initTime && !endTime) {
+      const nowTime = initTime[1].getTime();
       const intervalId = setInterval(() => {
-        setElapsedTime((new Date().getTime() - initTime[1].getTime()) / 1000);
+        setElapsedTime((new Date().getTime() - nowTime) / 1000);
       }, 50);
+
       return () => clearInterval(intervalId);
     }
   }, [initTime, endTime]);
-  // 기록된 데이터를 화면에 렌더링하는 부분.
-  React.useEffect(() => {
-    const scoreData = localStorage.getItem("score");
-    if (scoreData && scoreData.length > 0) {
-      const parsedScoreData = JSON.parse(scoreData);
-      if (JSON.stringify(parsedScoreData) !== JSON.stringify(scoreData)) {
-        setScores(parsedScoreData);
-      }
-    } else {
-      setScores([]);
-    }
-  }, [scores, setScores]);
+
+  // ----------------로컬스토리지를 활용하는 방법 - 사용 보류 ----------------------
+  // React.useEffect(() => {
+  //   const scoreData = localStorage.getItem("score");
+  //   if (scoreData && scoreData.length > 0) {
+  //     const parsedScoreData = JSON.parse(scoreData);
+  //     if (JSON.stringify(parsedScoreData) !== JSON.stringify(scoreData)) {
+  //       setScores(parsedScoreData);
+  //       console.log("무한루프체크5");
+  //     }
+  //   } else {
+  //     console.log("무한루프체크6");
+  //     setScores([]);
+  //   }
+  // }, []);
+  // ----------------------------------------------------------------------------
+
   // 기록된 누적 데이터의 분석을 보여주는 부분.
   React.useEffect(() => {
     if (scores && scores.length > 0) {
@@ -187,7 +201,8 @@ function TimeStopGame() {
           <button
             id="reset-button"
             onClick={() => {
-              localStorage.clear();
+              setScores([]);
+              // localStorage.clear(); // 로컬스토리지 사용 보류
             }}
           >
             초기화
