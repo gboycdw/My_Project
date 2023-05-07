@@ -16,26 +16,53 @@
   display: flex;
   justify-content: center;
   border: 1px solid green;
+  border-radius: 5px;
+  background-color: rgb(202, 240, 186);
 }
 
 #game-button {
   margin: 5px;
   width: 75px;
+  background-color: #eee;
+  border-radius: 20px;
+  box-shadow: 1px 1px 1px rgb(55, 55, 55);
+  transition-duration: 0.3s;
+}
+#game-button:active {
+  margin: 5px;
+  width: 75px;
+  background-color: #ccc;
+  box-shadow: none;
 }
 #option-button {
   text-align: center;
   margin: 5px;
   width: 90px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 1px rgb(55, 55, 55);
+  background-color: #eee;
 }
-#submit-button {
-  margin-top: 15px;
-  margin-left: 10px;
-}
-#reset-button {
-  margin-top: 15px;
-  margin-left: 10px;
+#option-button:active {
+  background-color: #ccc;
+  border-radius: 20px;
+  box-shadow: none;
 }
 
+/* 가장 바깥 게임박스 배경 */
+.game {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  border: 3px solid black;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgb(55, 55, 55);
+  width: auto;
+  height: auto;
+  background-color: rgb(238, 238, 238);
+}
+
+/* 액정 부분 */
 .gamebox {
   clear: both;
   display: block;
@@ -43,14 +70,50 @@
   padding: 10px;
   border: 1px solid black;
   box-sizing: border-box;
+  border-radius: 20px;
+  background-color: rgb(233, 246, 248);
   width: auto;
+  height: 230px;
 }
 
-.game {
-  display: inline-block;
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid black;
+/* 기록실 */
+.record-board {
+  background-color: beige;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+/* 기록실 상단 바 */
+.record-board #record-title {
+  display: flex;
   box-sizing: border-box;
-  width: auto;
+  align-items: center;
+
+  padding: 18px 18px;
+  height: 30px;
+  background-color: rgb(194, 200, 201);
+  border-radius: 5px;
+  justify-content: center;
+}
+#reset-button {
+  margin-right: auto;
+  box-shadow: 1px 1px 1px rgb(55, 55, 55);
+  background-color: #eee;
+  border-radius: 20px;
+}
+#reset-button:active {
+  background-color: #ccc;
+  border-radius: 20px;
+  box-shadow: none;
+}
+#submit-button {
+  margin-left: auto;
+  box-shadow: 1px 1px 1px rgb(55, 55, 55);
+  background-color: #eee;
+  border-radius: 20px;
+}
+#submit-button:active {
+  background-color: #ccc;
+  border-radius: 20px;
+  box-shadow: none;
 }

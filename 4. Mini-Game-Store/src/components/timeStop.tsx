@@ -66,7 +66,7 @@ function TimeStopGame() {
     // ----------------------------------------------------------------------------
   }
   function scoreSubmit() {
-    alert("아직 미구현 기능입니다.ㅎㅎ;");
+    alert("기록 제출은 도전모드에서만 가능합니다. 모드를 변경해 주세요.");
   }
   // 게임 리셋 기능 : 버튼 및 기록 초기화
   function resetGame() {
@@ -137,15 +137,17 @@ function TimeStopGame() {
             display: "flex",
             justifyContent: "center",
             fontFamily: "sans-serif",
+            backgroundColor: "white",
+            border: "1px solid",
+            width: "350px",
           }}
         >
-          ..........................mini-mini game
-          project..........................
+          mini-mini game project
         </a>
         <div className="gamebox">
           <div>
             <span>
-              게임 모드 <button>도전</button>
+              게임 모드 <button>연습</button>
             </span>
             <br />
             <span id="game-title">10초를 정확히 맞춰라!!</span>
@@ -190,23 +192,24 @@ function TimeStopGame() {
           <div>게임 시작 시간 : {initTime && initTime[0]}</div>
           <div>게임 종료 시간 : {endTime && endTime[0]}</div>
           {showScore && endTime && <div>당신의 기록 : {elapsedTime}초</div>}
-
-          <button id="submit-button" onClick={scoreSubmit}>
-            Submit
-          </button>
         </div>
         {/* 기록실 부분 */}
-        <div>
-          <span>기록실</span>
-          <button
-            id="reset-button"
-            onClick={() => {
-              setScores([]);
-              // localStorage.clear(); // 로컬스토리지 사용 보류
-            }}
-          >
-            초기화
-          </button>
+        <div className="record-board">
+          <div id="record-title">
+            <button
+              id="reset-button"
+              onClick={() => {
+                setScores([]);
+                // localStorage.clear(); // 로컬스토리지 사용 보류
+              }}
+            >
+              Reset
+            </button>
+            기록실{" "}
+            <button id="submit-button" onClick={scoreSubmit}>
+              Submit
+            </button>
+          </div>
           <ul>
             {scores.map((score, index) => (
               <li key={index}>
@@ -214,10 +217,10 @@ function TimeStopGame() {
               </li>
             ))}
           </ul>
-          <span style={{ display: "flex", justifyContent: "center" }}>
-            {printScore}
-          </span>
         </div>
+        <span style={{ display: "flex", justifyContent: "center" }}>
+          {printScore}
+        </span>
       </div>
     </>
   );
