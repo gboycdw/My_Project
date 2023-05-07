@@ -81,6 +81,23 @@ function TimeStopGame() {
     setShowTime(!showTime);
   }
   // 경과시간을 출력하는 부분
+
+  function grade(num: number): string {
+    const timeGap = Math.abs(num - 10);
+    if (timeGap === 0) {
+      return "👑Perfect";
+    } else if (timeGap < 0.03) {
+      return "😎Excellent";
+    } else if (timeGap < 0.07) {
+      return "😄Great";
+    } else if (timeGap < 0.1) {
+      return "😃So So";
+    } else if (timeGap < 0.15) {
+      return "😠Bad";
+    }
+    return "🤔What are you doing?";
+  }
+
   React.useEffect(() => {
     if (initTime && !endTime) {
       const nowTime = initTime[1].getTime();
@@ -213,7 +230,7 @@ function TimeStopGame() {
           <ul>
             {scores.map((score, index) => (
               <li key={index}>
-                {index + 1}회차 기록 : {score}초
+                {index + 1}회차 : {score}초 {grade(score)}
               </li>
             ))}
           </ul>
