@@ -87,8 +87,15 @@ function TimeStopGame() {
     const scoreData = localStorage.getItem("score");
     if (scoreData && scoreData.length > 0) {
       const parsedScoreData = JSON.parse(scoreData);
-      setScores(parsedScoreData);
+      if (JSON.stringify(parsedScoreData) !== JSON.stringify(scoreData)) {
+        setScores(parsedScoreData);
+      }
+    } else {
+      setScores([]);
     }
+  }, [scores, setScores]);
+  // 기록된 누적 데이터의 분석을 보여주는 부분.
+  React.useEffect(() => {
     if (scores && scores.length > 0) {
       const bestScore = scores.reduce((prev, curr) => {
         return Math.abs(curr - 10) < Math.abs(prev - 10) ? curr : prev;
@@ -102,8 +109,10 @@ function TimeStopGame() {
         3
       )}`;
       setPrintScore(finalMessage);
+    } else {
+      setPrintScore("");
     }
-  }, [localStorage, scores]);
+  }, [scores, setPrintScore]);
 
   //---------------------------------------------------------------------------------------//
   return (
