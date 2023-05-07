@@ -31,7 +31,7 @@ function TimeStopGame() {
   const [showScore, setShowScore] = React.useState(false);
   const [showTime, setShowTime] = React.useState(true);
   const [scores, setScores] = React.useState<number[]>([]);
-  const [printScore, setPrintScore] = React.useState("");
+  const [printScore, setPrintScore] = React.useState<any[]>([]);
   // 게임 시작 버튼
   function gameStart() {
     const start = new Date();
@@ -135,13 +135,12 @@ function TimeStopGame() {
         return Math.abs(curr - 10) > Math.abs(prev - 10) ? curr : prev;
       });
       const averageScore =
-        scores.reduce((acc, cur) => acc + cur, 0) / scores.length;
-      const finalMessage = `Best : ${bestScore}, Worst : ${worstScore}, AVR : ${averageScore.toFixed(
-        3
-      )}`;
+        scores.reduce((acc, cur) => acc + Math.abs(cur - 10), 0) /
+        scores.length;
+      const finalMessage = [bestScore, worstScore, averageScore.toFixed(2)];
       setPrintScore(finalMessage);
     } else {
-      setPrintScore("");
+      setPrintScore([]);
     }
   }, [scores, setPrintScore]);
 
@@ -235,9 +234,17 @@ function TimeStopGame() {
             ))}
           </ul>
         </div>
-        <span style={{ display: "flex", justifyContent: "center" }}>
-          {printScore}
-        </span>
+        {scores.length > 0 && (
+          <>
+            <div id="best-record-text">Best Record : {printScore[0]}sec</div>
+            <div id="worst-record-text">Worst Record : {printScore[1]}sec</div>
+            <div id="average-gap-text">Average Gap : {printScore[2]}sec</div>
+            <div id="average-gap-text">
+              your grade is ...... {grade(10 - printScore[2])}
+            </div>
+            <div id="gap-box"></div>
+          </>
+        )}
       </div>
     </>
   );

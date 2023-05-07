@@ -15,9 +15,9 @@
   margin: 5px;
   display: flex;
   justify-content: center;
-  border: 1px solid green;
+  border: 2px solid rgb(99, 134, 231);
   border-radius: 5px;
-  background-color: rgb(202, 240, 186);
+  background-color: rgb(152, 206, 238);
 }
 
 #game-button {
@@ -95,6 +95,7 @@
   border-radius: 5px;
   justify-content: center;
 }
+/* 리셋/제출 버튼 */
 #reset-button {
   margin-right: auto;
   box-shadow: 1px 1px 1px rgb(55, 55, 55);
@@ -116,4 +117,20 @@
   background-color: #ccc;
   border-radius: 20px;
   box-shadow: none;
+}
+/* 기록 분석실 */
+#best-record-text {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(232, 233, 179);
+}
+#worst-record-text {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(218, 180, 175);
+}
+#average-gap-text {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(182, 224, 154);
 }
