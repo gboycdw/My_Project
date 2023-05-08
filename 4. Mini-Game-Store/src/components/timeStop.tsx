@@ -86,9 +86,9 @@ function TimeStopGame() {
     const timeGap = Math.abs(num - 10);
     if (timeGap === 0) {
       return "👑Perfect";
-    } else if (timeGap < 0.03) {
+    } else if (timeGap < 0.01) {
       return "😎Excellent";
-    } else if (timeGap < 0.07) {
+    } else if (timeGap < 0.05) {
       return "😄Great";
     } else if (timeGap < 0.1) {
       return "😃So So";
@@ -148,22 +148,18 @@ function TimeStopGame() {
   return (
     <>
       <div className="game">
-        <a
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            fontFamily: "sans-serif",
-            backgroundColor: "white",
-            border: "1px solid",
-            width: "350px",
-          }}
-        >
-          mini-mini game project
-        </a>
+        <a id="title-text">미니미니게임 프로젝트</a>
         <div className="gamebox">
           <div>
             <span>
-              게임 모드 <button>연습</button>
+              게임 모드{" "}
+              <button
+                onClick={() => {
+                  alert("아직 미구현 기능입니다. DB연결 후 제공됩니다.");
+                }}
+              >
+                연습
+              </button>
             </span>
             <br />
             <span id="game-title">10초를 정확히 맞춰라!!</span>
@@ -189,14 +185,18 @@ function TimeStopGame() {
               </button>
             )}
             {endButton && (
-              <>
+              <div>
                 <button id="game-button" onClick={gameFinish}>
                   Finish
                 </button>
-                {showTime && (
+                {showTime ? (
                   <span> 경과 시간... {elapsedTime?.toFixed(3)}</span>
+                ) : (
+                  <div className="blindmode-text">
+                    <span> Blind Mode로 진행 중입니다.. </span>
+                  </div>
                 )}
-              </>
+              </div>
             )}
             {restartButton && (
               <button id="game-button" onClick={resetGame}>
@@ -204,10 +204,11 @@ function TimeStopGame() {
               </button>
             )}
           </div>
-
-          <div>게임 시작 시간 : {initTime && initTime[0]}</div>
-          <div>게임 종료 시간 : {endTime && endTime[0]}</div>
-          {showScore && endTime && <div>당신의 기록 : {elapsedTime}초</div>}
+          <div id="game-start-end-time">
+            <div>게임 시작 시간 : {initTime && initTime[0]}</div>
+            <div>게임 종료 시간 : {endTime && endTime[0]}</div>
+            {showScore && endTime && <div>당신의 기록 : {elapsedTime}초</div>}
+          </div>
         </div>
         {/* 기록실 부분 */}
         <div className="record-board">
