@@ -63,21 +63,42 @@ function Controller(props: ControllerProps) {
     setShowScore(false);
     setRestartButton(false);
   }
+
   // 경과시간을 볼지 말지 결정하는 기능
   function visibleTime() {
     setShowTime(!showTime);
   }
+
+  // 경과시간을 출력하는 부분 - 기존 코드
+  // 아래 개선된 코드와 비교하여 완벽하게 이해하고 나서 삭제할 것.
+  // React.useEffect(() => {
+  //   if (initTime && !endTime) {
+  //     const nowTime = initTime[1].getTime();
+  //     const intervalId = setInterval(() => {
+  //       setElapsedTime((new Date().getTime() - nowTime) / 1000);
+  //     }, 50);
+
+  //     return () => clearInterval(intervalId);
+  //   }
+  // }, [initTime, endTime]);
+
   // 경과시간을 출력하는 부분
-
+  // [효율성 개선 by GPT] (기존)setInterval => (개선)AnimationFrame
+  // 참고자료 : https://developer.mozilla.org/ko/docs/Web/API/window/requestAnimationFrame
   React.useEffect(() => {
+    let intervalId: number;
+    let lastTime: number;
+    const tick = () => {
+      if (initTime) {
+        setElapsedTime((new Date().getTime() - initTime[1].getTime()) / 1000);
+        intervalId = requestAnimationFrame(tick);
+      }
+    };
     if (initTime && !endTime) {
-      const nowTime = initTime[1].getTime();
-      const intervalId = setInterval(() => {
-        setElapsedTime((new Date().getTime() - nowTime) / 1000);
-      }, 50);
-
-      return () => clearInterval(intervalId);
+      lastTime = new Date().getTime();
+      intervalId = requestAnimationFrame(tick);
     }
+    return () => cancelAnimationFrame(intervalId);
   }, [initTime, endTime]);
 
   // ----------------로컬스토리지를 활용하는 방법 - 사용 보류 ----------------------
@@ -114,6 +135,7 @@ function Controller(props: ControllerProps) {
       setPrintScore([]);
     }
   }, [scores, setPrintScore]);
+
   return (
     <>
       <div className="gamebox">
