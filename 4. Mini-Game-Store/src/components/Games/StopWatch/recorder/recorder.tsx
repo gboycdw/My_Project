@@ -60,8 +60,7 @@ function Recorder(props: RecorderProps) {
         <ul>
           {scores.map((score, index) => (
             <li key={index}>
-              {index + 1}회차 : {score[0]}초 {grade(score[0])}, mode :{" "}
-              {score[1]}
+              {index + 1}회차 : {score[0]}초 {grade(score[0])} [{score[1]}]
             </li>
           ))}
         </ul>

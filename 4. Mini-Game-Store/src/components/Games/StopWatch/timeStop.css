@@ -124,6 +124,7 @@
   border-radius: 5px;
   margin-bottom: 10px;
   padding-bottom: 5px;
+  font-size: 15px;
 }
 /* 기록실 상단 바 */
 .record-board #record-title {
