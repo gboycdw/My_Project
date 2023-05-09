@@ -1,25 +1,6 @@
 import * as React from "react";
 import "./timeStop.css";
-
-function Now(now: Date) {
-  //   const now = new Date(); // 현재 날짜와 시간 정보를 가진 Date 객체 생성
-  const year = now.getFullYear(); // 년도
-  const month = now.getMonth() + 1; // 월 (0부터 시작하므로 1을 더해줌)
-  const date = now.getDate(); // 일
-  const hours = now.getHours(); // 시
-  const minutes = now.getMinutes(); // 분
-  const seconds = now.getSeconds(); // 초
-  const milliseconds = now.getMilliseconds(); // 밀리초
-
-  const dateString = `${year}-${month < 10 ? "0" : ""}${month}-${
-    date < 10 ? "0" : ""
-  }${date}`;
-  const timeString = `${hours < 10 ? "0" : ""}${hours}:${
-    minutes < 10 ? "0" : ""
-  }${minutes}:${seconds < 10 ? "0" : ""}${seconds}:${milliseconds}`;
-
-  return `${dateString} ${timeString}`;
-}
+import Now from "../Tools/Timer"
 
 function TimeStopGame() {
   const [initTime, setInitTime] = React.useState<[string, Date] | null>(null);
@@ -27,9 +8,11 @@ function TimeStopGame() {
   const [startButton, setStartButton] = React.useState(true);
   const [endButton, setEndButton] = React.useState(false);
   const [restartButton, setRestartButton] = React.useState(false);
+
   const [elapsedTime, setElapsedTime] = React.useState<number | null>(null);
   const [showScore, setShowScore] = React.useState(false);
   const [showTime, setShowTime] = React.useState(true);
+  
   const [scores, setScores] = React.useState<number[]>([]);
   const [printScore, setPrintScore] = React.useState<any[]>([]);
   // 게임 시작 버튼
