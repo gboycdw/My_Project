@@ -2,10 +2,12 @@ import React from "react";
 import Now from "../../../Tools/Timer";
 
 type ControllerProps = {
-  scores: number[];
-  setScores: React.Dispatch<React.SetStateAction<number[]>>;
+  scores: any[];
+  setScores: React.Dispatch<React.SetStateAction<any[]>>;
   printScore: any[];
   setPrintScore: React.Dispatch<React.SetStateAction<any[]>>;
+  gameModeChecker: string;
+  setGameModeChecker: React.Dispatch<React.SetStateAction<string>>;
 };
 
 function Controller(props: ControllerProps) {
@@ -16,11 +18,14 @@ function Controller(props: ControllerProps) {
   const [restartButton, setRestartButton] = React.useState(false);
   const [elapsedTime, setElapsedTime] = React.useState<number | null>(null);
   const [showScore, setShowScore] = React.useState(false);
-  const [showTime, setShowTime] = React.useState(true);
+  const [showTime, setShowTime] = React.useState(false);
+
   const scores = props.scores;
   const setScores = props.setScores;
   //   const printScore = props.printScore;
   const setPrintScore = props.setPrintScore;
+  const gameModeChecker = props.gameModeChecker;
+  const setGameModeChecker = props.setGameModeChecker;
   // 게임 시작 버튼
   function gameStart() {
     const start = new Date();
@@ -28,6 +33,11 @@ function Controller(props: ControllerProps) {
     setStartButton(false);
     setEndButton(true);
     setShowScore(true);
+    if (showTime) {
+      setGameModeChecker("visible");
+    } else {
+      setGameModeChecker("blind");
+    }
   }
   // 게임 종료 버튼
   function gameFinish() {
@@ -39,7 +49,7 @@ function Controller(props: ControllerProps) {
     if (initTime && end) {
       const elapsedTime = (end.getTime() - initTime[1].getTime()) / 1000;
       setElapsedTime(elapsedTime);
-      setScores([...scores, elapsedTime]);
+      setScores([...scores, [elapsedTime, gameModeChecker]]);
       // localStorage.setItem("score", JSON.stringify([...scores, elapsedTime])); // 로컬스토리지 사용 보류
     }
     // ----------------로컬스토리지를 활용하는 방법 - 사용 보류 ----------------------
@@ -62,11 +72,13 @@ function Controller(props: ControllerProps) {
     setStartButton(true);
     setShowScore(false);
     setRestartButton(false);
+    setGameModeChecker("blind");
   }
 
   // 경과시간을 볼지 말지 결정하는 기능
   function visibleTime() {
     setShowTime(!showTime);
+    setGameModeChecker("visible"); // 한번이라도 모드 변경했으면 무조건 visible 모드
   }
 
   // 경과시간을 출력하는 부분 - 기존 코드
@@ -121,15 +133,23 @@ function Controller(props: ControllerProps) {
   React.useEffect(() => {
     if (scores && scores.length > 0) {
       const bestScore = scores.reduce((prev, curr) => {
-        return Math.abs(curr - 10) < Math.abs(prev - 10) ? curr : prev;
-      });
+        const before = Math.abs(prev[0] - 10);
+        const after = Math.abs(curr[0] - 10);
+        return before < after ? prev : curr;
+      }, scores[0]);
       const worstScore = scores.reduce((prev, curr) => {
-        return Math.abs(curr - 10) > Math.abs(prev - 10) ? curr : prev;
-      });
+        const before = Math.abs(prev[0] - 10);
+        const after = Math.abs(curr[0] - 10);
+        return before > after ? prev : curr;
+      }, scores[0]);
       const averageScore =
-        scores.reduce((acc, cur) => acc + Math.abs(cur - 10), 0) /
+        scores.reduce((acc, cur) => acc + Math.abs(cur[0] - 10), 0) /
         scores.length;
-      const finalMessage = [bestScore, worstScore, averageScore.toFixed(3)];
+      const finalMessage = [
+        bestScore[0],
+        worstScore[0],
+        averageScore.toFixed(3),
+      ];
       setPrintScore(finalMessage);
     } else {
       setPrintScore([]);
@@ -196,7 +216,11 @@ function Controller(props: ControllerProps) {
         <div id="game-start-end-time">
           <div>게임 시작 시간 : {initTime && initTime[0]}</div>
           <div>게임 종료 시간 : {endTime && endTime[0]}</div>
-          {showScore && endTime && <div>당신의 기록 : {elapsedTime}초</div>}
+          {showScore && endTime && (
+            <div>
+              당신의 기록 : {elapsedTime}초 ({gameModeChecker} mode)
+            </div>
+          )}
         </div>
       </div>
     </>

@@ -4,8 +4,9 @@ import Recorder from "./recorder/recorder";
 import Controller from "./controller/controller";
 
 function TimeStopGame() {
-  const [scores, setScores] = React.useState<number[]>([]);
+  const [scores, setScores] = React.useState<any[]>([]);
   const [printScore, setPrintScore] = React.useState<any[]>([]);
+  const [gameModeChecker, setGameModeChecker] = React.useState("blind");
   return (
     <>
       <div className="game">
@@ -16,11 +17,15 @@ function TimeStopGame() {
           setScores={setScores}
           printScore={printScore}
           setPrintScore={setPrintScore}
+          gameModeChecker={gameModeChecker}
+          setGameModeChecker={setGameModeChecker}
         />
         <Recorder
           scores={scores}
           printScore={printScore}
           setScores={setScores}
+          gameModeChecker={gameModeChecker}
+          // setGameModeChecker={setGameModeChecker}
         />
       </div>
     </>

@@ -1,34 +1,41 @@
 import React from "react";
 
 type RecorderProps = {
-  scores: number[];
-  setScores: React.Dispatch<React.SetStateAction<number[]>>;
+  scores: any[];
+  setScores: React.Dispatch<React.SetStateAction<any[]>>;
   printScore: any[];
+  gameModeChecker: string;
+  // setGameModeChecker: React.Dispatch<React.SetStateAction<string>>;
 };
 
 function Recorder(props: RecorderProps) {
   const scores = props.scores;
   const setScores = props.setScores;
   const printScore = props.printScore;
-
+  const gameMode = props.gameModeChecker;
   function scoreSubmit() {
     alert("기록 제출은 도전모드에서만 가능합니다. 모드를 변경해 주세요.");
   }
 
   function grade(num: number): string {
     const timeGap = Math.abs(num - 10);
+    let gameScore = "🤔Bad";
+    // let gameMode = "Blind";
+    // if (mode === 1) {
+    //   gameMode = "";
+    // }
     if (timeGap === 0) {
-      return "👑Perfect";
+      gameScore = "👑Perfect";
     } else if (timeGap < 0.01) {
-      return "😎Excellent";
+      gameScore = "😎Excellent";
     } else if (timeGap < 0.05) {
-      return "😄Great";
+      gameScore = "😄Great";
     } else if (timeGap < 0.1) {
-      return "😃So So";
+      gameScore = "😃Nice";
     } else if (timeGap < 0.15) {
-      return "😠Bad";
+      gameScore = "😠So so";
     }
-    return "🤔What are you doing?";
+    return gameScore;
   }
 
   return (
@@ -53,7 +60,8 @@ function Recorder(props: RecorderProps) {
         <ul>
           {scores.map((score, index) => (
             <li key={index}>
-              {index + 1}회차 : {score}초 {grade(score)}
+              {index + 1}회차 : {score[0]}초 {grade(score[0])}, mode :{" "}
+              {score[1]}
             </li>
           ))}
         </ul>
