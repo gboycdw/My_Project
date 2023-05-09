@@ -1,13 +1,12 @@
 @font-face {
   font-family: "neodgm";
-  src: url("../font/neodgm.ttf");
+  src: url("../../font/neodgm.ttf");
 }
 
 * {
   font-family: "neodgm", cursive;
 }
 
-/* ---------------여기부터 메인 게임기 부분--------------- */
 /* 가장 바깥 게임박스 배경 */
 .game {
   display: inline-block;
