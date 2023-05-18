@@ -1,0 +1,92 @@
+* {
+  margin: 8;
+  font-family: "Arial", Times, sans-serif;
+}
+
+#header {
+  display: block;
+  margin-bottom: 3px;
+  padding: 3px;
+  width: 100%;
+  /* background-color: yellow; */
+}
+
+#header div.subscript {
+  margin: 5px;
+  padding: 8px;
+  background-color: silver;
+}
+#header div.subscript #main_head {
+  background-color: white;
+}
+#header div.subscript #main_link {
+  background-color: white;
+}
+
+#main {
+  display: flex;
+  padding: 10px;
+  background-color: rgb(230, 230, 230);
+}
+
+#main div.inputline {
+  clear: both;
+  float: left;
+  background-color: gold;
+
+  margin: 5px 5px;
+  padding: 10px 10px;
+  border-radius: 10px;
+}
+
+#main .controltext {
+  background-color: aquamarine;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#main #fianlbtn {
+  clear: both;
+  float: left;
+  margin: 5px 5px 5px 5px;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  padding: 5px;
+}
+
+#main #answer {
+  clear: both;
+  text-align: center;
+  font-weight: 5px;
+  font-family: "Lucida Handwriting", Comic Sans Ms, Handwriting;
+  font-size: 18px;
+}
+
+#main div.mycode {
+  display: block;
+  margin: 5px 10px;
+  padding: 2px 2px;
+  width: 50%;
+  height: 100%;
+  /* background-color: greenyellow; */
+}
+
+#main div.mycode #mycode_head {
+  margin: 5px 5px;
+  padding: 5px 5px;
+  background-color: aquamarine;
+  text-align: center;
+}
+
+#main div.mycode #mycode_body {
+  height: 90%;
+  overflow: hidden;
+  margin: 5px 5px;
+  padding: 5px 5px;
+  background-color: lightgoldenrodyellow;
+}
+
+#main #param {
+  display: flex;
+}

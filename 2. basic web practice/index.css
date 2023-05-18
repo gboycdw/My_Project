@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  vertical-align: middle;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+h2 {
+  color: #000;
+}
+
+#header {
+  border: 1px solid black;
+  text-align: center;
+}
+#main {
+  width: 100%;
+  height: 100%;
+}
+#main article {
+  height: 100%;
+  background-color: #50d3da;
+}
+#main article .leftarticle {
+  float: left;
+  width: 50%;
+}
+#main article .rightarticle {
+  float: left;
+  width: 50%;
+}
+#main article a {
+  display: flex;
+}
+#main article a .box1 {
+  float: left;
+  width: 50%;
+  height: 50%;
+  box-sizing: border-box;
+}
+#main article a .box2 {
+  float: right;
+  width: 50%;
+  height: 50%;
+  box-sizing: border-box;
+}
+#main article .box1 h2 {
+  color: black;
+  font-size: 15px;
+  font-weight: 10px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 10px 0;
+}
+#main article .box2 h2 {
+  color: black;
+  font-size: 15px;
+  font-weight: 10px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 10px 0;
+}
+#main article img {
+  margin: auto;
+}
+
+#footer {
+  clear: both;
+  float: left;
+  width: 100%;
+  height: 80px;
+  background-color: white;
+}
+
+#footer .copyright {
+  float: left;
+  width: 50%;
+}
+
+#footer .address {
+  float: right;
+  width: 50%;
+}
+#footer .copyright p {
+  font-size: 14px;
+  color: #999;
+  padding: 32px 0 0 40px;
+  text-align: left;
+}
+
+#footer .address p {
+  font-size: 14px;
+  color: #999;
+  padding: 32px 40px 0 0;
+  text-align: right;
+}
